@@ -41,15 +41,14 @@
     @foreach($songs as $song)
       <tr>
         <th scope="row">
-          
-          <?php
-          $titolo = $song->titolo;
-            if(strlen($titolo) > 50){
-              echo substr($titolo,0,50);
-              echo '...';
-            }
-            else echo $titolo
-          ?>          
+          @if(strlen($song->titolo) > 50)
+          <p title="{{$song->titolo}}">
+            {{substr($song->titolo,0,50)}}
+            ...
+          </p>
+          @else
+            {{$song->titolo}}
+          @endif
         </th>
         <td>{{$song->pubblicazione}}</td>
         <td>
